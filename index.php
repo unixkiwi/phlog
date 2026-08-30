@@ -8,22 +8,16 @@
     <title>Phlog</title>
 </head>
 <body>
-<?php include './includes/header.php'; ?>
-
 <main>
     <section>
         <h1>Welcome to Phlog</h1>
         <h3>A little blog written in purely in PHP!</h3>
     </section>
+
     <section>
         <h2>Account</h2>
-        <form>
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
-            <input type="submit" value="Submit">
-        </form>
+        <p><a href="public/login.php">Login</a></p>
+        <p><a href="public/register.php">Register</a></p>
     </section>
 </main>
 </body>
