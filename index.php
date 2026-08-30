@@ -8,6 +8,8 @@
     <title>Phlog</title>
 </head>
 <body>
+<?php include './includes/header.php'; ?>
+
 <main>
     <section>
         <h1>Welcome to Phlog</h1>
