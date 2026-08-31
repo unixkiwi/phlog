@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
+
+use classes\Session;
+
 require_once __DIR__ . '/vendor/autoload.php';
+
+$session = Session::getInstance();
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,8 +25,13 @@ require_once __DIR__ . '/vendor/autoload.php';
 
     <section>
         <h2>Account</h2>
-        <p><a href="public/login.php">Login</a></p>
-        <p><a href="public/register.php">Register</a></p>
+        <?php if ($session->isLoggedIn()) { ?>
+                <p><?php echo $session->getUsername() ?></p>
+                <p><a href="public/logout.php">Logout</a></p>
+        <?php } else { ?>
+                <p><a href="public/login.php">Login</a></p>
+                <p><a href="public/register.php">Register</a></p>
+        <?php } ?>
     </section>
 </main>
 </body>

@@ -17,6 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $user->register($_POST['username'], $_POST['password']);
 
     $message = $result->message;
+
+    if ($result->success) {
+        header("Location: ../index.php");
+        die();
+    }
 }
 ?>
 <!DOCTYPE html>
