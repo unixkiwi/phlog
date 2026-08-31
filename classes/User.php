@@ -5,6 +5,8 @@ namespace classes;
 
 use PDO;
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 class User
 {
     private PDO $db;
@@ -30,7 +32,7 @@ class User
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $this->db->query("INSERT INTO users (username, password_hash) VALUES (:username, :password)");
+        $stmt = $this->db->prepare("INSERT INTO users (username, password_hash) VALUES (:username, :password)");
 
         $success = $stmt->execute([
             ':username' => $username,
@@ -46,9 +48,8 @@ class User
 
     private function is_username_existing(string $username): bool
     {
-        $query = "SELECT username FROM users WHERE username = :username";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([$username]);
+        $stmt = $this->db->prepare("SELECT username FROM users WHERE username = :username");
+        $stmt->execute([':username' => $username]);
 
         return (bool)$stmt->fetch(PDO::FETCH_ASSOC);
     }

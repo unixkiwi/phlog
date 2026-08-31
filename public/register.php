@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 use classes\User;
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 require_once '../classes/Database.php';
 require_once '../classes/User.php';
@@ -13,12 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = new User();
     $result = $user->register($_POST['username'], $_POST['password']);
 
-    var_dump($result);
-
-    if ($result->success) {
-    } else {
-        $message = $result->message;
-    }
+    $message = $result->message;
 }
 ?>
 <!DOCTYPE html>

@@ -8,7 +8,7 @@ use PDOException;
 
 class Database
 {
-    private static Database $instance;
+    private static ?Database $instance = null;
     private PDO $conn;
 
     private string $host = 'localhost';
